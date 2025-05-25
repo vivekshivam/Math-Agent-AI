@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Math Agent</title>
+</head>
+<body>
+    <h2>Math Agent – Ask a Question</h2>
+    <form method="POST">
+        <input type="text" name="question" placeholder="Enter math question" size="50" required/>
+        <button type="submit">Ask</button>
+    </form>
+    {% if result %}
+        <h3>Answer:</h3>
+        <pre>{{ result }}</pre>
+
+        <h4>Feedback</h4>
+        <form method="POST" action="/feedback">
+            <input type="hidden" name="question" value="{{ question }}">
+            <input type="hidden" name="response" value="{{ result }}">
+            <textarea name="feedback" rows="4" cols="50" placeholder="Was the answer helpful? Any suggestions?"></textarea><br>
+            <button type="submit">Submit Feedback</button>
+        </form>
+    {% endif %}
+</body>
+</html>
